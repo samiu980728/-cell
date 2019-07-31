@@ -35,7 +35,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    // 注册cell
+    //注册cell 这样用到该cell的时候直接用这个cell对应的ID就可以了
     [self.tableView registerClass:[WXLHomeOneTableViewCell class] forCellReuseIdentifier:@"WXLHomeOneTableViewCellID"];
     [self.tableView registerClass:[WXLHomeTwoTableViewCell class] forCellReuseIdentifier:@"WXLHomeTwoTableViewCellID"];
     [self.tableView registerClass:[WXLHomeThreeTableViewCell class] forCellReuseIdentifier:@"WXLHomeThreeTableViewCellID"];
@@ -91,6 +91,7 @@
     //给cell赋值上对应row的model里代表这个cell的专属自定义cell的ID
     //因为public是总的所有种类cell的父类 所以用他的类型取特定的cell给每一个row
     WXLHomePublicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[model obtainCellReuseIdentifier]];
+    //这一步是为了给cell里面的各个属性赋值
     cell.cellConfig = model;
     return cell;
 }

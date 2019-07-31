@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//model里面就是存储属性的嘛
 @interface WXLHomeOneModel : WXLHomePublicModel
 /**
  名称

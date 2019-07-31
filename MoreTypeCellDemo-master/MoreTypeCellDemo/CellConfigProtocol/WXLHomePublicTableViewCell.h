@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  协议对象
  */
+//cell 配置 这个id类型的变量其实就是一个model 但是因为不确定是哪个model 所以用 id 表示
 @property (nonatomic, strong) id<WXLPublicCellConfigProtocol>cellConfig;
 @end
 

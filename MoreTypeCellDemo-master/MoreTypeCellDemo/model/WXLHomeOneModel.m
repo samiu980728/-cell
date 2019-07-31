@@ -14,6 +14,7 @@
  
  @return 复用标识
  */
+//model里面实现方法的细节
 - (nullable NSString *)obtainCellReuseIdentifier{
     return @"WXLHomeOneTableViewCellID";
 }
