@@ -71,6 +71,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //这里为什么不直接用 WXLHomeTwoModel？ 因为你不知道现在所在的是哪个model 这也就是这样协议使用最重要的一点
+    //系统根据indexPath来选择将要显示的cell 这个cell有其对应的model
     id<WXLPublicCellConfigProtocol>model = self.listArray[indexPath.row];
     [model cellDidSelectRowAtIndexPath:indexPath other:nil];
 }
@@ -84,7 +86,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    //找到对应row的model
     id<WXLPublicCellConfigProtocol>model = self.listArray[indexPath.row];
+    //给cell赋值上对应row的model里代表这个cell的专属自定义cell的ID
+    //因为public是总的所有种类cell的父类 所以用他的类型取特定的cell给每一个row
     WXLHomePublicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[model obtainCellReuseIdentifier]];
     cell.cellConfig = model;
     return cell;
